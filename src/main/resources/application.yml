@@ -1,15 +1,5 @@
-server:
-  port: 8080
 spring:
   application:
     name: Gateway
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-        - id: UAA
-          uri: http://127.0.0.1:8081/
-          predicates:
-            - Path=/UAA/**
+  config:
+    import: optional:configserver:${SPRING_CLOUD_CONFIG_URI:http://localhost:8081}
